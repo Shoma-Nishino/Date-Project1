@@ -1,10 +1,12 @@
 package com.example.demo.domain;
 
+import java.time.LocalDate;
+
 public class Datetime {
 	private Long id;
 	private String dateId;
 	private String dateName;
-	private Long dateStandart;
+	private LocalDate dateStandart;
 	private Long calulationYear;
 	private Long calulationMonth;
 	private Long calulationDay;
@@ -33,12 +35,13 @@ public class Datetime {
 		this.dateName = dateName;
 	}
 
-	public Long getDateStandart(){
+	public LocalDate getDateStandart(){
 		return dateStandart;
 	}
 
-	public void setDateStandart(Long dateStandart) {
-		this.dateStandart = dateStandart;
+	public void setDateStandart(String dateStandart){
+		LocalDate localDate = LocalDate.parse(dateStandart);
+		this.dateStandart = localDate;
 	}
 
 	public Long getCalulationYear(){
