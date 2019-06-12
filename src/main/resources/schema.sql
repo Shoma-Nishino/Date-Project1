@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS datetime (
+CREATE TABLE IF NOT EXISTS Datetime (
   id bigint(20) NOT NULL AUTO_INCREMENT,
   dateId varchar(255) DEFAULT NULL,
   dateName varchar(255),

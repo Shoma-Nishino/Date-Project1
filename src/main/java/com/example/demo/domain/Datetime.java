@@ -1,6 +1,7 @@
 package com.example.demo.domain;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Datetime {
 	private Long id;
@@ -40,7 +41,8 @@ public class Datetime {
 	}
 
 	public void setDateStandart(String dateStandart){
-		LocalDate localDate = LocalDate.parse(dateStandart);
+		DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyyMMdd");
+		LocalDate localDate = LocalDate.parse(dateStandart, f);
 		this.dateStandart = localDate;
 	}
 
