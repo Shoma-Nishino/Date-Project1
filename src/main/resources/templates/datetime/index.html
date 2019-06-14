@@ -37,6 +37,7 @@
             <td th:text="*{calulationYear}"></td>
             <td th:text="*{calulationMonth}"></td>
             <td th:text="*{calulationDay}"></td>
+            <td th:text="*{dateStandart} + *{calulationYear}"></td>
             <!-- ④ -->
             <td><a class="btn btn-default btn-xs" th:href="@{/datetime/{id}(id=*{id})}">参照</a></td>
             <td><a class="btn btn-default btn-xs" th:href="@{/datetime/{id}/edit(id=*{id})}">編集</a></td>
@@ -46,6 +47,7 @@
                 <input class="btn btn-default btn-xs" type="submit" value="削除" />
               </form>
             </td>
+          </tr>
           </tr>
         </tbody>
       </table>
