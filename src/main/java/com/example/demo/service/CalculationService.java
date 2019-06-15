@@ -12,8 +12,8 @@ public class CalculationService {
 
 	public String calculate(CharSequence localDate, Datetime datetime) {
 		LocalDate date = LocalDate.parse(localDate, DateTimeFormatter.ofPattern("yyyyMMdd"));
-		LocalDate calculatedDate = date.plusYears(datetime.getCalulationYear());
-		return calculatedDate.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+		LocalDate result = date.plusYears(datetime.getCalulationYear());
+		return result.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
 	}
 
 }

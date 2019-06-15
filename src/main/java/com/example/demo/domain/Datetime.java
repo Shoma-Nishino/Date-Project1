@@ -8,6 +8,7 @@ public class Datetime {
 	private Long calulationYear;
 	private Long calulationMonth;
 	private Long calulationDay;
+	private Long result;
 
 	public Long getId(){
 		return id;
@@ -63,6 +64,14 @@ public class Datetime {
 
 	public void setCalulationDay(Long calulationDay) {
 		this.calulationDay = calulationDay;
+	}
+
+	public Long getResult(){
+		return result;
+	}
+
+	public void setResult(Long result) {
+		this.result = result;
 	}
 
 }
