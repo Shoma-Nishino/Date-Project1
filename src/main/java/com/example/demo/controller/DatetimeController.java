@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.domain.Datetime;
-import com.example.demo.service.CalculationService;
 import com.example.demo.service.DatetimeService;
 
 @Controller
@@ -46,12 +45,8 @@ public class DatetimeController {
 
 	@PostMapping
 	public String create(@ModelAttribute Datetime datetime, Model model) {
-		CalculationService result = new CalculationService();
-
-		result.calculate(datetime.getDateStandart(), datetime);
-
+		datetime.setResultDate(datetime.getDateStandart() + datetime.getCalulationYear() + datetime.getCalulationMonth() + datetime.getCalulationDay());
 		datetimeService.save(datetime);
-
 		return "redirect:/datetime";
 	}
 

@@ -19,7 +19,7 @@ public interface DatetimeMapper {
 	@Select("select * from datetime where id = #{id}")
 	Datetime findOne(Long id);
 
-	@Insert("insert into datetime (dateId, dateName, dateStandart, calulationYear, calulationMonth, calulationDay, result) values (#{dateId}, #{dateName}, #{dateStandart}, #{calulationYear}, #{calulationMonth}, #{calulationDay}, #{result})")
+	@Insert("insert into datetime (dateId, dateName, dateStandart, calulationYear, calulationMonth, calulationDay, resultDate) values (#{dateId}, #{dateName}, #{dateStandart}, #{calulationYear}, #{calulationMonth}, #{calulationDay}, #{resultDate})")
 	@Options(useGeneratedKeys = true)
 	void save(Datetime datetime);
 

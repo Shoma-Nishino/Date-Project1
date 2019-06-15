@@ -4,11 +4,11 @@ public class Datetime {
 	private Long id;
 	private String dateId;
 	private String dateName;
-	private String dateStandart;
+	private Long dateStandart;
 	private Long calulationYear;
 	private Long calulationMonth;
 	private Long calulationDay;
-	private Long result;
+	private Long resultDate;
 
 	public Long getId(){
 		return id;
@@ -34,11 +34,11 @@ public class Datetime {
 		this.dateName = dateName;
 	}
 
-	public String getDateStandart(){
+	public Long getDateStandart(){
 		return dateStandart;
 	}
 
-	public void setDateStandart(String dateStandart){
+	public void setDateStandart(Long dateStandart){
 		this.dateStandart = dateStandart;
 	}
 
@@ -66,12 +66,12 @@ public class Datetime {
 		this.calulationDay = calulationDay;
 	}
 
-	public Long getResult(){
-		return result;
+	public Long getResultDate(){
+		return resultDate;
 	}
 
-	public void setResult(Long result) {
-		this.result = result;
+	public void setResultDate(Long resultDate) {
+		this.resultDate = resultDate;
 	}
 
 }
