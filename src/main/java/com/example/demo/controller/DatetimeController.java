@@ -1,5 +1,8 @@
 package com.example.demo.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,8 +47,11 @@ public class DatetimeController {
 	}
 
 	@PostMapping
-	public String create(@ModelAttribute Datetime datetime, Model model) {
-		datetime.setResultDate(datetime.getDateStandart() + datetime.getCalulationYear() + datetime.getCalulationMonth() + datetime.getCalulationDay());
+	public String create(@ModelAttribute Datetime datetime, Model model){
+		//datetime.setResultDate(datetime.getDateStandart() + datetime.getCalulationYear() + datetime.getCalulationMonth() + datetime.getCalulationDay());
+		//datetime.setResultDate(convertToLocalDate(datetime.getDateStandart(), "yyyyMMdd"));
+		LocalDate date = convertToLocalDate(datetime.getDateStandart(), "yyyyMMdd");
+		datetime.setResultDate(date.plusYears(datetime.getCalulationYear()).plusMonths(datetime.getCalulationMonth()).plusDays(datetime.getCalulationDay()));
 		datetimeService.save(datetime);
 		return "redirect:/datetime";
 	}
@@ -53,6 +59,8 @@ public class DatetimeController {
 	@PutMapping("{id}")
 	public String update(@PathVariable Long id, @ModelAttribute Datetime datetime) {
 		datetime.setId(id);
+		LocalDate date = convertToLocalDate(datetime.getDateStandart(), "yyyyMMdd");
+		datetime.setResultDate(date.plusYears(datetime.getCalulationYear()).plusMonths(datetime.getCalulationMonth()).plusDays(datetime.getCalulationDay()));
 		datetimeService.update(datetime);
 		return "redirect:/datetime";
 	}
@@ -61,6 +69,11 @@ public class DatetimeController {
 	public String destory(@PathVariable Long id) {
 		datetimeService.delete(id);
 		return "redirect:/datetime";
+	}
+
+	public static LocalDate convertToLocalDate(String date,String format) {
+        // シンプルにLocalDate型に変換された日付を返却
+		return LocalDate.parse(date, DateTimeFormatter.ofPattern(format));
 	}
 
 }

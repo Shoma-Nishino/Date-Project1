@@ -39,6 +39,10 @@
           <label>加減値(日)</label>
           <p th:text="*{calulationDay}"></p>
         </div>
+        <div>
+          <label>計算結果の日</label>
+          <p th:text="*{resultDate}"></p>
+        </div>
       </div>
       <div>
         <a class="btn btn-default" th:href="@{/datetime/{id}/edit(id=*{id})}">編集</a>

@@ -1,14 +1,16 @@
 package com.example.demo.domain;
 
+import java.time.LocalDate;
+
 public class Datetime {
 	private Long id;
 	private String dateId;
 	private String dateName;
-	private Long dateStandart;
-	private Long calulationYear;
-	private Long calulationMonth;
-	private Long calulationDay;
-	private Long resultDate;
+	private String dateStandart;
+	private int calulationYear;
+	private int calulationMonth;
+	private int calulationDay;
+	private LocalDate resultDate;
 
 	public Long getId(){
 		return id;
@@ -34,44 +36,44 @@ public class Datetime {
 		this.dateName = dateName;
 	}
 
-	public Long getDateStandart(){
+	public String getDateStandart(){
 		return dateStandart;
 	}
 
-	public void setDateStandart(Long dateStandart){
+	public void setDateStandart(String dateStandart){
 		this.dateStandart = dateStandart;
 	}
 
-	public Long getCalulationYear(){
+	public int getCalulationYear(){
 		return calulationYear;
 	}
 
-	public void setCalulationYear(Long calulationYear) {
+	public void setCalulationYear(int calulationYear) {
 		this.calulationYear = calulationYear;
 	}
 
-	public Long getCalulationMonth(){
+	public int getCalulationMonth(){
 		return calulationMonth;
 	}
 
-	public void setCalulationMonth(Long calulationMonth) {
+	public void setCalulationMonth(int calulationMonth) {
 		this.calulationMonth = calulationMonth;
 	}
 
-	public Long getCalulationDay(){
+	public int getCalulationDay(){
 		return calulationDay;
 	}
 
-	public void setCalulationDay(Long calulationDay) {
+	public void setCalulationDay(int calulationDay) {
 		this.calulationDay = calulationDay;
 	}
 
-	public Long getResultDate(){
+	public LocalDate getResultDate(){
 		return resultDate;
 	}
 
-	public void setResultDate(Long resultDate) {
-		this.resultDate = resultDate;
+	public void setResultDate(LocalDate localDate) {
+		this.resultDate = localDate;
 	}
 
 }

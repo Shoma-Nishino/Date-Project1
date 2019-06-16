@@ -21,7 +21,7 @@
         </div>
         <div class="form-group">
           <label class="control-label">基準となる日時</label>
-          <input class="form-control" type="number" th:field="*{dateStandart}" />
+          <input class="form-control" type="text" th:field="*{dateStandart}" />
         </div>
         <div class="form-group">
           <label class="control-label">加減値(年)</label>
@@ -34,10 +34,6 @@
         <div class="form-group">
           <label class="control-label">加減値(日)</label>
           <input class="form-control" type="number" th:field="*{calulationDay}" />
-        </div>
-                <div class="form-group">
-          <label class="control-label">計算結果</label>
-          <input class="form-control" type="number" th:field="*{resultDate}" />
         </div>
         <button class="btn btn-default" type="submit">更新</button>
       </form>

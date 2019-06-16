@@ -23,7 +23,7 @@ public interface DatetimeMapper {
 	@Options(useGeneratedKeys = true)
 	void save(Datetime datetime);
 
-	@Update("update datetime set dateId = #{dateId}, dateName = #{dateName}, dateStandart = #{dateStandart}, calulationYear = #{calulationYear}, calulationMonth = #{calulationMonth}, calulationDay = #{calulationDay} where id = #{id}")
+	@Update("update datetime set dateId = #{dateId}, dateName = #{dateName}, dateStandart = #{dateStandart}, calulationYear = #{calulationYear}, calulationMonth = #{calulationMonth}, calulationDay = #{calulationDay}, resultDate = #{resultDate} where id = #{id}")
 	void update(Datetime datetime);
 
 	@Delete("delete from datetime where id = #{id}")

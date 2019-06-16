@@ -6,6 +6,6 @@ CREATE TABLE IF NOT EXISTS Datetime (
   calulationYear bigint(20),
   calulationMonth bigint(20),
   calulationDay bigint(20),
-  resultDate bigint(20),
+  resultDate date,
   PRIMARY KEY (id),
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
