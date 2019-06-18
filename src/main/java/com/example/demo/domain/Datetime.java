@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 public class Datetime {
 	private Long id;
-	private String dateId;
 	private String dateName;
 	private String dateStandart;
 	private int calulationYear;
@@ -18,14 +17,6 @@ public class Datetime {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getDateId() {
-		return dateId;
-	}
-
-	public void setDateId(String dateId) {
-		this.dateId = dateId;
 	}
 
 	public String getDateName() {

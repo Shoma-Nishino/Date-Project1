@@ -15,7 +15,6 @@
         <thead>
           <tr>
             <th>ID</th>
-            <th>オリジナルID</th>
             <th>日付の名前</th>
             <th>基準となる日時</th>
             <th>加減値(年)</th>
@@ -32,7 +31,6 @@
           <tr th:each="datetime:${datetime}" th:object="${datetime}">
             <!-- ③ -->
             <td th:text="*{id}"></td>
-            <td th:text="*{dateId}"></td>
             <td th:text="*{dateName}"></td>
             <td th:text="*{dateStandart}"></td>
             <td th:text="*{calulationYear}"></td>
@@ -40,7 +38,6 @@
             <td th:text="*{calulationDay}"></td>
             <td th:text="*{resultDate}"></td>
             <!-- ④ -->
-            <td><a class="btn btn-default btn-xs" th:href="@{/datetime/{id}(id=*{id})}">参照</a></td>
             <td><a class="btn btn-default btn-xs" th:href="@{/datetime/{id}/edit(id=*{id})}">編集</a></td>
             <td>
               <!-- ⑤ -->
