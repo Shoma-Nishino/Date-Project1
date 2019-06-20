@@ -32,7 +32,8 @@ public class DatetimeController {
 	}
 
 	@GetMapping("new")
-	public String newDatetime() {
+	public String newDatetime(@ModelAttribute @Validated Datetime datetime, Model model) {
+		model.addAttribute("datetime");
 		return "datetime/new";
 	}
 
@@ -43,7 +44,7 @@ public class DatetimeController {
 	}
 
 	@PostMapping
-	public String create(@Validated @ModelAttribute Datetime datetime, BindingResult bindingResult, Model model){
+	public String create( @ModelAttribute @Validated Datetime datetime, BindingResult bindingResult, Model model){
 		if (bindingResult.hasErrors()) {
 			return "datetime/new";
 		}
@@ -53,7 +54,10 @@ public class DatetimeController {
 	}
 
 	@PutMapping("{id}")
-	public String update(@PathVariable Long id, @Validated @ModelAttribute Datetime datetime) {
+	public String update(@ModelAttribute @Validated Datetime datetime, BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			return "datetime/edit";
+		}
 		calulation(datetime);
 		datetimeService.update(datetime);
 		return "redirect:/datetime";

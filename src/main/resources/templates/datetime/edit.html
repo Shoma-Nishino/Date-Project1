@@ -17,7 +17,8 @@
         </div>
         <div class="form-group">
           <label class="control-label">基準となる日時</label>
-          <input class="form-control" type="text" th:field="*{dateStandart}" />
+          <input class="form-control" type="text" th:field="*{dateStandart}"/>
+          <label class="control-label"  th:if="${#fields.hasErrors('dateStandart')}" th:errors="*{dateStandart}" style="color: red"></label>
         </div>
         <div class="form-group">
           <label class="control-label">加減値(年)</label>

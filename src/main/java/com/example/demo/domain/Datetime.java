@@ -8,7 +8,7 @@ public class Datetime {
 	private Long id;
 	private String dateName;
 
-	@Pattern(regexp = "((19|[2-9][0-9])[0-9]{2})(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])", message="{dateStandart_check}")
+	@Pattern(regexp = "((19|[2-9][0-9])[0-9]{2})(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])")
 	private String dateStandart;
 
 	private int calulationYear;
