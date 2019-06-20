@@ -6,6 +6,8 @@ import java.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -41,14 +43,17 @@ public class DatetimeController {
 	}
 
 	@PostMapping
-	public String create(@ModelAttribute Datetime datetime, Model model){
+	public String create(@Validated @ModelAttribute Datetime datetime, BindingResult bindingResult, Model model){
+		if (bindingResult.hasErrors()) {
+			return "datetime/new";
+		}
 		calulation(datetime);
 		datetimeService.save(datetime);
 		return "redirect:/datetime";
 	}
 
 	@PutMapping("{id}")
-	public String update(@PathVariable Long id, @ModelAttribute Datetime datetime) {
+	public String update(@PathVariable Long id, @Validated @ModelAttribute Datetime datetime) {
 		calulation(datetime);
 		datetimeService.update(datetime);
 		return "redirect:/datetime";
