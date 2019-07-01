@@ -80,4 +80,9 @@ public class DatetimeController {
 		datetime.setResultDate(date.plusYears(datetime.getCalulationYear()).plusMonths(datetime.getCalulationMonth()).plusDays(datetime.getCalulationDay()));
 	}
 
+	/*テストをするためにテストしやすいコードを追記(本末転倒)*/
+    public String makeMessage(String message) {
+        return message;
+    }
+
 }
