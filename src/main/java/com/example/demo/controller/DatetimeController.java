@@ -32,7 +32,7 @@ public class DatetimeController {
 	}
 
 	@GetMapping("new")
-	public String newDatetime(@ModelAttribute @Validated Datetime datetime, Model model) {
+	public String newDatetime(@Validated Datetime datetime, Model model) {
 		model.addAttribute("datetime");
 		return "datetime/new";
 	}
@@ -44,7 +44,7 @@ public class DatetimeController {
 	}
 
 	@PostMapping
-	public String create( @ModelAttribute @Validated Datetime datetime, BindingResult bindingResult, Model model){
+	public String create(@ModelAttribute @Validated Datetime datetime, BindingResult bindingResult, Model model){
 		if (bindingResult.hasErrors()) {
 			return "datetime/new";
 		}
