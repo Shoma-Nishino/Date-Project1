@@ -13,7 +13,7 @@ public class DatetimeControllerTest {
 
 	@Test
 	public void calulation_値がないとき() {
-		assertThat(datetimeController.calulation(null), is("値がありません"));
+		assertThat(datetimeController.convertToLocalDate(null, null), is(null));
 	}
 
 }

@@ -70,12 +70,12 @@ public class DatetimeController {
 	}
 
 	/*シンプルにLocalDate型に変換された日付を返却*/
-	public static LocalDate convertToLocalDate(String date,String format) {
+	public LocalDate convertToLocalDate(String date,String format) {
 		return LocalDate.parse(date, DateTimeFormatter.ofPattern(format));
 	}
 
 	/*日時計算式*/
-	public static void calulation(@ModelAttribute Datetime datetime) {
+	public void calulation(@ModelAttribute Datetime datetime) {
 		LocalDate date = convertToLocalDate(datetime.getDateStandart(), "yyyyMMdd");
 		datetime.setResultDate(date.plusYears(datetime.getCalulationYear()).plusMonths(datetime.getCalulationMonth()).plusDays(datetime.getCalulationDay()));
 	}
