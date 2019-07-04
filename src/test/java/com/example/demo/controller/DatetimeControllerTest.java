@@ -24,11 +24,19 @@ public class DatetimeControllerTest {
         mvc = MockMvcBuilders.standaloneSetup(new DatetimeController()).build();
     }
 
-	/*newのgetアクションのテスト*/
+	/*newのテスト*/
+    /*責務としてはGETアクションがきてviewを返すこと*/
 	@Test
 	public void newGetTest() throws Exception  {
-		mvc.perform(get("/new"))
-		.andExpect(status().isOk());
+		mvc.perform(get("/new"))/*"/new"というパスにGETリクエストを送ったら*/
+		.andExpect(status().isOk())/*OK=ステータスコード200なのか確認する*/
+		.andExpect(view().name("datetime/new"));/*ビューが返ってくるか*/
+	}
+
+	@Test
+	public void postTest() throws Exception{
+		mvc.perform(post("datetime")
+		        .param("dateName", "test"));
 	}
 
 	/*テストをするためにテストしやすいコードを追記(本末転倒)*/
