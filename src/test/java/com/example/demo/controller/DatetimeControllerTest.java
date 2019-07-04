@@ -10,9 +10,13 @@ import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import com.example.demo.domain.Datetime;
+
 public class DatetimeControllerTest {
 	private DatetimeController datetimeController;
 	private MockMvc mvc;
+
+	Datetime datetime = new Datetime();
 
 	@Before
 	public void setUp() {
@@ -33,10 +37,14 @@ public class DatetimeControllerTest {
 		.andExpect(view().name("datetime/new"));/*ビューが返ってくるか*/
 	}
 
+	/*POSTのテスト(バリデーションも含める)*/
 	@Test
 	public void postTest() throws Exception{
 		mvc.perform(post("datetime")
-		        .param("dateName", "test"));
+				.flashAttr("datetime", datetime))
+		        .andExpect(model().hasErrors())
+		        .andExpect(model().attribute("datetime", datetime));
+//		        .param("dateName", "test"));
 	}
 
 	/*テストをするためにテストしやすいコードを追記(本末転倒)*/
