@@ -11,6 +11,7 @@ public class DatetimeServiceTest {
 	DatetimeService datetimeService = new DatetimeService();
 
 	/*日時フォーマットのテスト*/
+	/*責務としては、文字列をLocalDate型に変換して返すこと*/
 	@Test
 	public void convertToLocalDateTest() {
 		LocalDate expected = LocalDate.of(2000, 10, 10);

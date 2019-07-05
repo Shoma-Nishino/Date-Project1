@@ -1,27 +1,25 @@
 package com.example.demo.controller;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import java.time.LocalDate;
+
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.ArgumentMatchers;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.example.demo.domain.Datetime;
+import com.example.demo.mapper.DatetimeMapper;
 
 public class DatetimeControllerTest {
-	private DatetimeController datetimeController;
 	private MockMvc mvc;
 
-	Datetime datetime = new Datetime();
-
-	@Before
-	public void setUp() {
-		datetimeController = new DatetimeController();
-	}
+	 @MockBean /*Mockitoが作成される*/
+     DatetimeMapper datetimeMapper;
 
     @Before
     public void before() throws Exception {
@@ -29,7 +27,7 @@ public class DatetimeControllerTest {
     }
 
 	/*newのテスト*/
-    /*責務としてはGETアクションがきてviewを返すこと*/
+    /*責務としては、GETアクションがきてviewを返すこと*/
 	@Test
 	public void newGetTest() throws Exception  {
 		mvc.perform(get("/new"))/*"/new"というパスにGETリクエストを送ったら*/
@@ -37,20 +35,24 @@ public class DatetimeControllerTest {
 		.andExpect(view().name("datetime/new"));/*ビューが返ってくるか*/
 	}
 
-	/*POSTのテスト(バリデーションも含める)*/
-	@Test
 	public void postTest() throws Exception{
-//		mvc.perform(post("datetime")
-//				.flashAttr("datetime", datetime))
-//		        .andExpect(model().hasErrors())
-//		        .andExpect(model().attribute("datetime", datetime));
-//		        .param("dateName", "test"));
-	}
+		mvc.perform(post("/datetime")
+		.param("dateName", "テスト")
+        .param("dateStandart", "20200101")
+        .param("calulationYear", "1")
+        .param("calulationMonth", "1")
+        .param("calulationDay", "1"))
+		.andExpect(model().hasNoErrors())/*バリデーション*/
+		.andExpect(redirectedUrl("/datetime"));/*リダイレクト*/
 
-	/*テストをするためにテストしやすいコードを追記(本末転倒)*/
-	@Test
-	public void testMakeMessage() {
-	    assertThat(datetimeController.makeMessage("world"), is("world"));
+		/*saveが1回呼び出されて、saveの引数に入ってくるDatetimeオブジェクトの内容確認*/
+	    verify(datetimeMapper, times(1))
+	        .save(ArgumentMatchers.argThat(d -> d.getDateName().equals("テスト")
+	            && d.getDateStandart().equals("20200101")
+	            && d.getCalulationYear() == 1
+	            && d.getCalulationMonth() == 1
+	            && d.getCalulationDay() == 1
+	            && d.getResultDate().equals(LocalDate.of(2021, 02, 02))));
 	}
 
 }

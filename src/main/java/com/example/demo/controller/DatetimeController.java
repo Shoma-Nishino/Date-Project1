@@ -66,11 +66,4 @@ public class DatetimeController {
 		return "redirect:/datetime";
 	}
 
-
-
-	/*テストをするためにテストしやすいコードを追記(本末転倒)*/
-    public String makeMessage(String message) {
-        return message;
-    }
-
 }
