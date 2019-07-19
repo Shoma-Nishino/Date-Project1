@@ -54,6 +54,18 @@
     		<artifactId>spring-boot-system-test</artifactId>
     		<version>0.9.1</version>
 		</dependency>
+		<!-- ここからが Selenide の設定 -->
+    	<dependency>
+        	<groupId>com.codeborne</groupId>
+        	<artifactId>selenide</artifactId>
+        	<version>4.9.1</version>
+    	</dependency>
+		<!-- ここまでが Selenide の設定 -->
+		<dependency>
+    		<groupId>junit</groupId>
+    		<artifactId>junit</artifactId>
+    		<version>4.12</version>
+    	</dependency>
 	</dependencies>
 
 	<build>

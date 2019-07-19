@@ -18,5 +18,4 @@ public class DatetimeServiceTest {
 		LocalDate actual = datetimeService.convertToLocalDate("20001010", "yyyyMMdd");
 		assertThat(actual, is(expected));
 	}
-
 }
